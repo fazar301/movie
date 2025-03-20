@@ -23,7 +23,7 @@ class MovieFactory extends Factory
             'category_id' => $this->faker->randomElement([1, 2, 3]),
             'tahun' => $this->faker->year,
             'pemain' => $this->faker->sentence,
-            'foto_sampul' => 'default.jpg',
+            'foto_sampul' => 'default.png',
         ];
     }
 }
