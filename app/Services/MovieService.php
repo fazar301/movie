@@ -60,13 +60,13 @@ class MovieService
         $filename = time() . '_' . $file->getClientOriginalName();
         // Simpan file ke public/images
         $file->move(public_path('images'), $filename);
-        return 'images/' . $filename;
+        return $filename;
     }
 
     private function deleteImage($filename)
     {
-        if (File::exists(public_path($filename))) {
-            File::delete(public_path($filename));
+        if (File::exists(public_path('images/' . $filename))) {
+            File::delete(public_path('images/' . $filename));
         }
     }
 } 
