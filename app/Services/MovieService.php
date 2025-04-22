@@ -57,14 +57,15 @@ class MovieService
 
     private function storeImage($file)
     {
-        $imagePath = $file->store('images/movie_covers', 'public');
-        return Str::replace('images/', '', $imagePath);
+        $filename = time() . '_' . $file->getClientOriginalName();
+        $path = $file->storeAs('images/movie_covers', $filename, 'public');
+        return $path;
     }
 
     private function deleteImage($filename)
     {
-        if (File::exists(public_path('images/' . $filename))) {
-            File::delete(public_path('images/' . $filename));
+        if (Storage::disk('public')->exists($filename)) {
+            Storage::disk('public')->delete($filename);
         }
     }
 } 
